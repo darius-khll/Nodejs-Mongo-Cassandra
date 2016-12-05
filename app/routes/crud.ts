@@ -8,10 +8,10 @@ router.get('/hello', (req, res) => {
     res.send('<h1 style="background:red;">Hello World</h1>');
 });
 
-router.use((req, res, next) => {
-    console.log(req.url);
-    next();
-});
+// router.use((req, res, next) => {
+//     console.log(req.url);
+//     next();
+// });
 
 router.get('/getData', async (req, res) => {
     let response1 = datas.datas.filter(c => c.name.toLowerCase() == "ali");
