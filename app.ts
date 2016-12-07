@@ -2,6 +2,8 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as os from "os";
+import * as us from "./app/services/userService";
+
 var cluster = require('cluster');
 
 if (cluster.isMaster) {
@@ -37,7 +39,10 @@ else {
         res.end(`test - ` + cluster.worker.id);
     });
     app.get('/test2', (req, res) => {
-        res.end(`test2 - ` + cluster.worker.id);
+        let service = new us.userService()
+        service.addMongoTest().then(() => {
+            res.end(`test2 - ` + cluster.worker.id);
+        });
     });
 
     var server = app.listen(8081, () => {
