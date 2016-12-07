@@ -1,5 +1,5 @@
 import * as express from "express";
-import * as us from "./../services/userService"
+import * as us from "./../services/userService";
 var router = express.Router();
 var datas: { datas: Array<{ name: string }> } = require("./../data/data.json");
 
